@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<script>
+	window.onload = function(){
+		var vm1 = new Vue({
+			el : "#test1",
+			// vue 객체가 관리할 요소들이 만들어지기 전에 호출되는 함수
+			data : {
+				a1 : 100
+			},
+			beforeCreate() {
+				console.log('vue 객체가 관리할 요소들이 만들어지기 전')
+				console.log("a1" + this.a1)
+			}, 
+			// vue 객체가 관리할 요소들이 만들어진 후 호출되는 함수
+			created() {
+				console.log('vue 객체가 관리할 요소들이 만들어진 후')
+				console.log("a1" + this.a1)
+			},
+			// vue 객체가 관리할 HTML 태그가 할당되기 전
+			beforeMount() {
+				console.log('vue객체가 관리할 태그가 할당되기 전')
+			},
+			// vue 객체가 관리할 HTML 태그가 할당된 후
+			mounted() {
+				console.log('vue객체가 관리할 태그가 할당 된 이후')
+			},
+			beforeUpdate() {
+				console.log('관리하고 있는 html 요소 내부가 변경되기 전')
+			},
+			updated() {
+				console.log('관리하고 있는 html 요소 내부가 변경된 후')
+			},
+			beforeDestroy() {
+				console.log('vue 객체의 기능이 소멸되기 전')	
+			},
+			destroyed() {
+				console.log('vue 객체의 기능이 소멸된 후')	
+			},
+			methods: {
+				setValue(){
+					this.a1 = 200
+				}
+			},
+		})
+		//vm1.$mount("#test");
+		// vue 객체에 마운트 된 태그를 관리하는 요소를 소멸시킴
+		vm1.$destroy();
+
+		
+		vm1.$mount("#test");
+	}
+</script>
+
+<div id="test1">
+	<h3>{{a1}}</h3>
+	<button type="button" v-on:click="setValue">값 변경</button>
+</div>
+
+</body>
+</html>

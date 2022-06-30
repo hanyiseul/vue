@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<script>
+	// Template
+	// v-html : 지정된 데이터를 html 코드로 인식하여 바인딩
+	// v-bind:속성명 : 지정된 데이터를 지정된 속성 값으로 설정
+	
+	window.onload=function(){
+		const test1 = new Vue({
+			el : "#test1",
+			data : {
+				a1 : '문자열1',
+				a2 : '문자열2',
+				a3 : '<h3>문자열3</h3>',
+				a4 : 'image/logo.png',
+				a5 : 300,
+				a6 : 200
+			}
+		})
+	}
+</script>
+<body>
+	<div id="test1">
+		<h4>{{a1}}</h4>
+		<h4>{{a2}}</h4>
+		<div>{{a3}}</div>
+		<div v-html="a3"></div>
+		<img v-bind:src="a4" alt="" v-bind:width="a5" v-bind:height="a6">
+	</div>
+</body>
+</html>

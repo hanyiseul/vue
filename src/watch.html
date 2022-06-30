@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<script>
+	// Watch
+	// data 속성에서 정의한 변수를 감시하고 있다가 변수가 가지고 있는 값이 변경되면 이를 감지해 동작하는 요소
+
+	window.onload = function() {
+		const vm1 = new Vue({
+			el: "#test1",
+			data: {
+				a1 : '',
+				a2 : '',
+			},
+			watch: {
+				// 변수 a1을 감시하는 watch 설정
+				a1 : function(newVal, oldVal) {
+					console.log('a1 새로운 값 : ' + newVal + ', a1 이전값 : ' + oldVal)
+					this.a3 = 'a1 : ' + newVal
+				},
+				// 변수 a2을 감시하는 watch 설정
+				a2 : function(newVal, oldVal) {
+					console.log('a2 새로운 값 : ' + newVal + ', a2 이전값 : ' + oldVal)
+					this.a3 = 'a2 : ' + newVal
+				},
+			}
+		})
+	}
+
+</script>
+<body>
+	<div id="test1">
+		input1 : <input type="text" v-model="a1"><br>
+		input2 : <input type="text" v-model="a2"><br>
+		<h3>{{a1}}</h3>
+		<h3>{{a2}}</h3>
+		<h3>{{a3}}</h3>
+	</div>
+
+</body>
+</html>
